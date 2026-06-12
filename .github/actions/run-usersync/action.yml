@@ -1,0 +1,23 @@
+name: Fetch Users from a Tenant
+description: Loads arc-config.yaml, simulates tenant login, runs FetchUser script, prints summary.
+
+runs:
+  using: composite
+  steps:
+    - name: Print Config Path
+      shell: pwsh
+      run: |
+        Write-Host "Config Path: ${{ github.workspace }}"
+
+    - name: Load arc-config.yaml into GITHUB_ENV
+      shell: pwsh
+      run: |
+        Import-Module "${{ github.action_path }}/../../../tools/arc-lib/OverlayConfig.psm1" -Force
+        Export-OverlayConfigToEnv -ConfigPath "${{ github.workspace }}/arc-config.yaml"
+
+    - name: Verify env variables were set
+      shell: pwsh
+      run: |
+        Write-Host "Tenant ID : $env:RESOURCE_TENANT_ID"
+        Write-Host "Client ID : $env:RESOURCE_CLIENT_ID"
+        Write-Host "Secret    : $env:RESOURCE_CLIENT_SECRET"
