@@ -168,4 +168,4 @@ function Export-OverlayConfigToEnv {
     }
 }
 
-Export-ModuleMember -Function Export-OverlayConfigToEnv
+Export-ModuleMember -Function Export-OverlayConfigToEnv, Get-DottedValue
