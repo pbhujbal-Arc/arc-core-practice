@@ -5,7 +5,7 @@ $categories_to_process = @('entra',
     'aad',
     'azure-graph',
     'azure-ad',
-    'azure-active-directory',
+    'azure-active-directory1',
     'active-directory'
 )
 
