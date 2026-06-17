@@ -48,6 +48,10 @@ $script:Mapping = [ordered]@{
 
 $script:KnownSections = @('resource')
 
+function LogOutput {
+    param([string]$Message)
+    Write-Host "[$($MyInvocation.ScriptName):$($MyInvocation.Line)] $Message"
+}
 function ConvertFrom-MinimalYaml {
     <#
     .SYNOPSIS
